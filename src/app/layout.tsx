@@ -2,6 +2,8 @@ import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import "@/styles/globals.css"
 import { cn } from "@/lib/utils"
+import { Sidebar } from "@/components/sidebar/sidebar"
+import Navbar from "@/components/navbar/navbar"
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" })
 
@@ -23,7 +25,12 @@ export default function RootLayout({
           inter.variable
         )}
       >
-        {children}
+        <div className="grid h-screen max-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr] grid-rows-[auto,1fr] lg:grid-rows-[60px_1fr]">
+          <Sidebar />
+          <Navbar />
+
+          <div className="p-4">{children}</div>
+        </div>
       </body>
     </html>
   )
