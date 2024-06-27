@@ -1,38 +1,20 @@
-import AddCard from "@/components/project/add-card"
+import { AddProjectModal } from "@/components/project/add-project-modal"
 import ProjectCard from "@/components/project/project-card"
-import { Project } from "@/types/project"
+import { getProjects } from "@/lib/project"
+import Link from "next/link"
 
-const projects: Project[] = [
-  {
-    id: "projekt",
-    status: "in progress",
-    url: "hosted.peciak.xyz",
-  },
-  {
-    id: "projekt",
-    status: "errored",
-    url: "hosted.peciak.xyz",
-  },
-  {
-    id: "projekt",
-    status: "deployed",
-    url: "hosted.peciak.xyz",
-  },
-  {
-    id: "projekt",
-    status: "exited",
-    url: "hosted.peciak.xyz",
-  },
-]
+export default async function Projects() {
+  const projects = await getProjects()
 
-export default function Projects() {
   return (
     <main>
       <div className="flex gap-4 flex-wrap">
-        <AddCard />
+        <AddProjectModal />
 
         {projects.map((project, i) => (
-          <ProjectCard key={i} project={project} />
+          <Link key={i} href={`/projects/${project.name}`}>
+            <ProjectCard project={project} />
+          </Link>
         ))}
       </div>
     </main>

@@ -7,21 +7,17 @@ type ProjectCardProps = {
 }
 
 export default function ProjectCard({
-  project: { id, status, url },
+  project: { name, status, url },
 }: ProjectCardProps) {
   return (
-    <Card className="w-[300px] cursor-pointer">
+    <Card className="w-[300px]">
       <CardHeader>
         <CardTitle className="flex gap-2 items-center text-xl">
-          {id}
-          <Badge variant={getBadgeVariant(status)}>
-            {status}
-          </Badge>
+          {name}
+          <Badge variant={getBadgeVariant(status)}>{status}</Badge>
         </CardTitle>
 
-        <CardDescription>
-          {url}
-        </CardDescription>
+        <CardDescription>{url}</CardDescription>
       </CardHeader>
     </Card>
   )

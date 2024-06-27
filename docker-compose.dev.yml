@@ -2,7 +2,7 @@ version: "3.8"
 services:
   web:
     image: oven/bun:1
-    command: sh -c "bun install && bunx prisma db push && bun run dev"
+    command: sh -c "bun install && bunx prisma db push --accept-data-loss && bun run dev"
     working_dir: /app
     volumes:
       - .:/app
@@ -17,6 +17,17 @@ services:
       - POSTGRES_PASSWORD=postgres
     volumes:
       - db:/var/lib/postgresql/data
+
+  prisma-studio:
+    ports:
+      - "5555:5555"
+    build:
+      context: .
+      dockerfile: prisma/Dockerfile
+    env_file:
+      .env
+    volumes:
+      - ./prisma:/app/prisma
 
 volumes:
   db:

@@ -1,12 +1,10 @@
-export type ProjectStatus = "in progress" | "deployed" | "exited" | "errored"
-
 export type Project = {
-  id: string
-  status: ProjectStatus
+  name: string
+  status: string
   url: string
 }
 
-export function getBadgeVariant(status: ProjectStatus) {
+export function getBadgeVariant(status: string) {
   switch (status) {
     case "in progress":
       return "default"

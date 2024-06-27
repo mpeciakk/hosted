@@ -8,7 +8,47 @@ datasource db {
 }
 
 model Project {
+  name         String        @id @unique
+  url          String
+  status       String
+  environments Environment[]
+  deployments  Deployment[]
+}
+
+model Environment {
+  id Int @id @unique @default(autoincrement())
+
+  name        String
+  branch      String
+  domain      String
+  variables   EnvironmentVariable[]
+  deployments Deployment[]
+
+  Project     Project @relation(fields: [projectName], references: [name])
+  projectName String
+}
+
+model EnvironmentVariable {
+  id    Int    @id @unique @default(autoincrement())
+  key   String
+  value String
+
+  Environment   Environment @relation(fields: [environmentId], references: [id])
+  environmentId Int
+}
+
+model Node {
   id Int @id @unique @default(autoincrement())
 
   name String
+  url  String
+}
+
+model Deployment {
+  id Int @id @unique @default(autoincrement())
+
+  environment   Environment @relation(fields: [environmentId], references: [id])
+  environmentId Int
+  Project       Project     @relation(fields: [projectName], references: [name])
+  projectName   String
 }

@@ -2,12 +2,13 @@
 
 import Link from "next/link"
 import {
+  Container,
   FolderGit,
   Home,
+  NotepadText,
   Package,
   Package2,
   Server,
-  Target,
 } from "lucide-react"
 
 import { usePathname } from "next/navigation"
@@ -32,10 +33,18 @@ export const LINKS = [
   {
     name: (
       <>
-        <Target className="h-4 w-4" /> Targets
+        <Container className="h-4 w-4" /> Environments
       </>
     ),
-    path: "/targets",
+    path: "/environments",
+  },
+  {
+    name: (
+      <>
+        <NotepadText className="h-4 w-4" /> Environments templates
+      </>
+    ),
+    path: "/templates",
   },
   {
     name: (
