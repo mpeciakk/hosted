@@ -12,7 +12,7 @@ export default async function Projects() {
         <AddProjectModal />
 
         {projects.map((project, i) => (
-          <Link key={i} href={`/projects/${project.name}`}>
+          <Link key={i} href={`/projects/${project.name}/general`}>
             <ProjectCard project={project} />
           </Link>
         ))}
