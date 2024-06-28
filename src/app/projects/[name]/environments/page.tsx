@@ -1,6 +1,7 @@
-import EnvironmentCard from "@/components/environment/environment-card";
-import { CreateProjectEnvironmentModal } from "@/components/project/create-project-environment-modal";
-import { getEnvironmentTemplates, getEnvironments } from "@/lib/environment";
+import CardContainer from "@/components/CardContainer"
+import EnvironmentCard from "@/components/environment/environment-card"
+import { CreateProjectEnvironmentModal } from "@/components/project/create-project-environment-modal"
+import { getEnvironmentTemplates, getEnvironments } from "@/lib/environment"
 
 type ProjectEnvironmentsPageProps = {
   params: {
@@ -8,19 +9,19 @@ type ProjectEnvironmentsPageProps = {
   }
 }
 
-export default async function ProjectEnvironmentsPage({ params: { name } }: ProjectEnvironmentsPageProps) {
+export default async function ProjectEnvironments({
+  params: { name },
+}: ProjectEnvironmentsPageProps) {
   const templates = await getEnvironmentTemplates()
   const environments = await getEnvironments(name)
 
   return (
-    <div className="flex flex-wrap gap-4">
+    <CardContainer>
       <CreateProjectEnvironmentModal project={name} templates={templates} />
 
-      {
-        environments.map((environment, i) => (
-          <EnvironmentCard environment={environment} key={i} />
-        ))
-      }
-    </div>
+      {environments.map((environment, i) => (
+        <EnvironmentCard environment={environment} key={i} />
+      ))}
+    </CardContainer>
   )
 }

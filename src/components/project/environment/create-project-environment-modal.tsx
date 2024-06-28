@@ -8,12 +8,12 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
-import { Card } from "../ui/card"
+import { Card } from "../../ui/card"
 import { FolderPlus } from "lucide-react"
 import { useState } from "react"
 import { EnvironmentTemplate } from "@/types/environment"
 import CreateProjectEnvironmentForm from "./create-project-environment-form"
-import EnvironmentCard from "../environment/environment-card"
+import EnvironmentCard from "../../environment/environment-card"
 
 type CreateProjectEnvironmentModalProps = {
   templates: EnvironmentTemplate[]
@@ -24,7 +24,7 @@ type CreateProjectEnvironmentModalSteps = "menu" | "select-template" | "create"
 
 export function CreateProjectEnvironmentModal({
   templates,
-  project
+  project,
 }: CreateProjectEnvironmentModalProps) {
   const [open, setOpen] = useState(false)
   const [template, setTemplate] = useState<EnvironmentTemplate | null>(null)
@@ -43,7 +43,7 @@ export function CreateProjectEnvironmentModal({
       }}
     >
       <DialogTrigger asChild>
-        <Card className="w-[300px] cursor-pointer flex items-center justify-center min-h-[102px]">
+        <Card className="card cursor-pointer flex items-center justify-center">
           <FolderPlus className="w-12 h-12" />
         </Card>
       </DialogTrigger>
@@ -85,7 +85,11 @@ export function CreateProjectEnvironmentModal({
             ))}
           </div>
         ) : (
-          <CreateProjectEnvironmentForm template={template} project={project} setOpen={setOpen} />
+          <CreateProjectEnvironmentForm
+            template={template}
+            project={project}
+            setOpen={setOpen}
+          />
         )}
       </DialogContent>
     </Dialog>

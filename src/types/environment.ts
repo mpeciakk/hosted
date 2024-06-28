@@ -5,7 +5,7 @@ export type EnvironmentTemplate = {
 }
 
 export type EnvironmentVariable = {
-  key: string,
+  key: string
   value: string
 }
 

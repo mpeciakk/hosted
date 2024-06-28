@@ -1,4 +1,5 @@
-import { AddEnvironmentModal } from "@/components/environment/add-environment-modal"
+import CardContainer from "@/components/CardContainer"
+import { CreateEnvironmentModal } from "@/components/environment/create-environment-modal"
 import EnvironmentCard from "@/components/environment/environment-card"
 import { getEnvironmentTemplates } from "@/lib/environment"
 import Link from "next/link"
@@ -7,16 +8,14 @@ export default async function Templates() {
   const templates = await getEnvironmentTemplates()
 
   return (
-    <main>
-      <div className="flex gap-4 flex-wrap">
-        <AddEnvironmentModal />
+    <CardContainer>
+      <CreateEnvironmentModal />
 
-        {templates.map((environment, i) => (
-          <Link key={i} href={`/templates/${environment.name}`}>
-            <EnvironmentCard environment={environment} />
-          </Link>
-        ))}
-      </div>
-    </main>
+      {templates.map((environment, i) => (
+        <Link key={i} href={`/templates/${environment.name}`}>
+          <EnvironmentCard environment={environment} />
+        </Link>
+      ))}
+    </CardContainer>
   )
 }

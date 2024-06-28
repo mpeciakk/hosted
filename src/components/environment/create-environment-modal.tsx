@@ -11,29 +11,28 @@ import {
 import { Card } from "../ui/card"
 import { FolderPlus } from "lucide-react"
 import { useState } from "react"
-import AddProjectForm from "./add-project-form"
+import CreateEnvironmentForm from "./create-environment-form"
 
-export function AddProjectModal() {
+export function CreateEnvironmentModal() {
   const [open, setOpen] = useState(false)
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Card className="w-[300px] cursor-pointer flex items-center justify-center min-h-[102px]">
+        <Card className="card cursor-pointer flex items-center justify-center">
           <FolderPlus className="w-12 h-12" />
         </Card>
       </DialogTrigger>
 
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>Create project</DialogTitle>
+          <DialogTitle>Create environment</DialogTitle>
           <DialogDescription>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-            Reiciendis, provident?
+            Template for environment in which project may be deployed
           </DialogDescription>
         </DialogHeader>
 
-        <AddProjectForm setOpen={setOpen} />
+        <CreateEnvironmentForm setOpen={setOpen} />
       </DialogContent>
     </Dialog>
   )

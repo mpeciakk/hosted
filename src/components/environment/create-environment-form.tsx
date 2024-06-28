@@ -21,7 +21,7 @@ type AddEnvironmentFormProps = {
   setOpen: (state: boolean) => void
 }
 
-export default function AddEnvironmentForm({
+export default function CreateEnvironmentForm({
   setOpen,
 }: AddEnvironmentFormProps) {
   function onSubmit(data: z.infer<typeof formSchema>) {

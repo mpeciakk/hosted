@@ -10,8 +10,8 @@ export async function getProjects() {
 export async function getProject(name: string) {
   return await prisma.project.findFirst({
     where: {
-      name
-    }
+      name,
+    },
   })
 }
 

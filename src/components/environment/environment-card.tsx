@@ -9,13 +9,13 @@ export default function EnvironmentCard({
   environment: { name, branch, domain },
 }: EnvironmentCardProps) {
   return (
-    <Card className="w-[300px]">
+    <Card className="card">
       <CardHeader>
         <CardTitle className="flex gap-2 items-center text-xl">
           {name}
         </CardTitle>
 
-        <CardDescription>{branch}</CardDescription>
+        <CardDescription>{branch} on branch {domain}</CardDescription>
       </CardHeader>
     </Card>
   )

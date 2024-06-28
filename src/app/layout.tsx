@@ -29,7 +29,7 @@ export default function RootLayout({
           <Sidebar />
           <Navbar />
 
-          <div className="p-4">{children}</div>
+          <main className="p-4">{children}</main>
         </div>
       </body>
     </html>

@@ -39,4 +39,6 @@ export async function createEnvironment(
       },
     },
   })
+
+  revalidatePath("/projects/[name]/environments")
 }

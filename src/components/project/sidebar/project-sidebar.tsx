@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import { Container, Home, Package } from "lucide-react"
+import { Cog, Container, Package } from "lucide-react"
 
 import { usePathname } from "next/navigation"
 
@@ -9,10 +9,10 @@ export const LINKS = [
   {
     name: (
       <>
-        <Home className="h-4 w-4" /> General settings
+        <Cog className="h-4 w-4" /> Settings
       </>
     ),
-    path: "general",
+    path: "Settings",
   },
   {
     name: (
