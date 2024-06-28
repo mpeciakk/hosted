@@ -1,6 +1,6 @@
 "use client"
 import AutoForm, { AutoFormSubmit } from "@/components/ui/auto-form"
-import { createProject } from "@/lib/project"
+import { createNode } from "@/lib/node"
 import * as z from "zod"
 
 const formSchema = z.object({
@@ -13,13 +13,13 @@ const formSchema = z.object({
   }),
 })
 
-type CreateProjectFormProps = {
+type CreateNodeFormProps = {
   setOpen: (state: boolean) => void
 }
 
-export default function CreateProjectForm({ setOpen }: CreateProjectFormProps) {
+export default function CreateNodeForm({ setOpen }: CreateNodeFormProps) {
   function onSubmit(data: z.infer<typeof formSchema>) {
-    createProject(data.name, data.url)
+    createNode(data)
     setOpen(false)
   }
 

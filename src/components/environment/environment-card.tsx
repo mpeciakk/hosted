@@ -11,7 +11,7 @@ export default function EnvironmentCard({
   return (
     <Card className="card">
       <CardHeader>
-        <CardTitle className="flex gap-2 items-center text-xl">
+        <CardTitle className="text-xl">
           {name}
         </CardTitle>
 

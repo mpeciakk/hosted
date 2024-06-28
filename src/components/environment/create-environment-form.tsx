@@ -5,7 +5,7 @@ import * as z from "zod"
 
 const formSchema = z.object({
   name: z.string({
-    required_error: "Id is required.",
+    required_error: "Name is required.",
   }),
 
   branch: z.string({
