@@ -1,5 +1,6 @@
 "use server"
 
+import { revalidatePath } from "next/cache"
 import { prisma } from "./prisma"
 
 export async function getProjects() {
@@ -22,4 +23,6 @@ export async function createProject(name: string, url: string) {
       status: "in progress",
     },
   })
+
+  revalidatePath("/projects")
 }

@@ -33,14 +33,6 @@ export const LINKS = [
   {
     name: (
       <>
-        <Container className="h-4 w-4" /> Environments
-      </>
-    ),
-    path: "/environments",
-  },
-  {
-    name: (
-      <>
         <NotepadText className="h-4 w-4" /> Environments templates
       </>
     ),

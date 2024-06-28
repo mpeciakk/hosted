@@ -28,6 +28,12 @@ model Environment {
   projectName String
 }
 
+model EnvironmentTemplate {
+  name   String @id @unique
+  branch String
+  domain String
+}
+
 model EnvironmentVariable {
   id    Int    @id @unique @default(autoincrement())
   key   String

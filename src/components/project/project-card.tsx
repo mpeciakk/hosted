@@ -10,7 +10,7 @@ export default function ProjectCard({
   project: { name, status, url },
 }: ProjectCardProps) {
   return (
-    <Card className="w-[300px]">
+    <Card className="w-[300px] min-h-[102px]">
       <CardHeader>
         <CardTitle className="flex gap-2 items-center text-xl">
           {name}
