@@ -15,7 +15,7 @@ export default function EnvironmentCard({
           {name}
         </CardTitle>
 
-        <CardDescription>{branch} on branch {domain}</CardDescription>
+        <CardDescription>{domain} on branch {branch}</CardDescription>
       </CardHeader>
     </Card>
   )

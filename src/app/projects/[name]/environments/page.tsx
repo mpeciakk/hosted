@@ -1,6 +1,6 @@
 import CardContainer from "@/components/CardContainer"
 import EnvironmentCard from "@/components/environment/environment-card"
-import { CreateProjectEnvironmentModal } from "@/components/project/create-project-environment-modal"
+import { CreateProjectEnvironmentModal } from "@/components/project/environment/create-project-environment-modal"
 import { getEnvironmentTemplates, getEnvironments } from "@/lib/environment"
 
 type ProjectEnvironmentsPageProps = {

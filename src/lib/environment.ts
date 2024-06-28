@@ -13,7 +13,7 @@ export async function createEnvironmentTemplate(template: EnvironmentTemplate) {
     data: template,
   })
 
-  revalidatePath("/templates")
+  revalidatePath("/templates", "page")
 }
 
 export async function getEnvironments(project: string) {
@@ -40,5 +40,5 @@ export async function createEnvironment(
     },
   })
 
-  revalidatePath("/projects/[name]/environments")
+  revalidatePath("/projects/[name]/environments", "page")
 }

@@ -1,3 +1,3 @@
 export default function ProjectSettings() {
-  return <div>General</div>
+  return <div>Settings</div>
 }

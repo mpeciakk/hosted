@@ -13,11 +13,11 @@ const formSchema = z.object({
   }),
 })
 
-type AddProjectFormProps = {
+type CreateProjectFormProps = {
   setOpen: (state: boolean) => void
 }
 
-export default function AddProjectForm({ setOpen }: AddProjectFormProps) {
+export default function CreateProjectForm({ setOpen }: CreateProjectFormProps) {
   function onSubmit(data: z.infer<typeof formSchema>) {
     createProject(data.name, data.url)
     setOpen(false)

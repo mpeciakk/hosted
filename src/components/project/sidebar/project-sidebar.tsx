@@ -12,7 +12,7 @@ export const LINKS = [
         <Cog className="h-4 w-4" /> Settings
       </>
     ),
-    path: "Settings",
+    path: "settings",
   },
   {
     name: (

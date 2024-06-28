@@ -4,6 +4,8 @@ import EnvironmentCard from "@/components/environment/environment-card"
 import { getEnvironmentTemplates } from "@/lib/environment"
 import Link from "next/link"
 
+export const dynamic = 'force-dynamic'
+
 export default async function Templates() {
   const templates = await getEnvironmentTemplates()
 

@@ -17,13 +17,13 @@ const formSchema = z.object({
   }),
 })
 
-type AddEnvironmentFormProps = {
+type CreateEnvironmentFormProps = {
   setOpen: (state: boolean) => void
 }
 
 export default function CreateEnvironmentForm({
   setOpen,
-}: AddEnvironmentFormProps) {
+}: CreateEnvironmentFormProps) {
   function onSubmit(data: z.infer<typeof formSchema>) {
     createEnvironmentTemplate(data)
     setOpen(false)

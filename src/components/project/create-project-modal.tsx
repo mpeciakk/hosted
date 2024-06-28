@@ -3,7 +3,6 @@
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
@@ -11,9 +10,9 @@ import {
 import { Card } from "../ui/card"
 import { FolderPlus } from "lucide-react"
 import { useState } from "react"
-import AddProjectForm from "./create-project-form"
+import CreateProjectForm from "./create-project-form"
 
-export function AddProjectModal() {
+export default function CreateProjectModal() {
   const [open, setOpen] = useState(false)
 
   return (
@@ -29,7 +28,7 @@ export function AddProjectModal() {
           <DialogTitle>Create project</DialogTitle>
         </DialogHeader>
 
-        <AddProjectForm setOpen={setOpen} />
+        <CreateProjectForm setOpen={setOpen} />
       </DialogContent>
     </Dialog>
   )
