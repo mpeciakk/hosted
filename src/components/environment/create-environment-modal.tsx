@@ -1,39 +1,34 @@
 "use client"
 
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog"
-import { Card } from "../ui/card"
-import { FolderPlus } from "lucide-react"
-import { useState } from "react"
-import CreateEnvironmentForm from "./create-environment-form"
+import { z } from "zod"
+import Modal from "../modal"
+import { createEnvironmentTemplate } from "@/lib/environment"
+
+const formSchema = z.object({
+  name: z.string({
+    required_error: "Name is required.",
+  }),
+
+  branch: z.string({
+    required_error: "Branch is required.",
+  }),
+
+  domain: z.string({
+    required_error: "Domain is required.",
+  }),
+  
+  composeFile: z.string({
+    required_error: "Compose file name is required."
+  })
+})
 
 export function CreateEnvironmentModal() {
-  const [open, setOpen] = useState(false)
-
   return (
-    <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger asChild>
-        <Card className="card cursor-pointer flex items-center justify-center">
-          <FolderPlus className="w-12 h-12" />
-        </Card>
-      </DialogTrigger>
-
-      <DialogContent className="sm:max-w-[425px]">
-        <DialogHeader>
-          <DialogTitle>Create environment</DialogTitle>
-          <DialogDescription>
-            Template for environment in which project may be deployed
-          </DialogDescription>
-        </DialogHeader>
-
-        <CreateEnvironmentForm setOpen={setOpen} />
-      </DialogContent>
-    </Dialog>
+    <Modal
+      title="Create environment"
+      description="Template for environment in which project may be deployed"
+      form={formSchema}
+      onSubmit={createEnvironmentTemplate}
+    />
   )
 }

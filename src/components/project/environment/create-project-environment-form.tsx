@@ -33,14 +33,28 @@ export default function CreateProjectEnvironmentForm({
         required_error: "Domain is required.",
       })
       .default(template?.domain || ""),
+
+    composeFile: z
+      .string({
+        required_error: "Compose file name is required.",
+      })
+      .default(template?.composeFile || ""),
+
+    environmentVariables: z.array(
+      z.object({
+        key: z.string(),
+        value: z.string(),
+      })
+    ),
   })
 
   function onSubmit(data: z.infer<typeof formSchema>) {
     setOpen(false)
+    const { environmentVariables, ...data2 } = data
     createEnvironment(
       {
-        ...data,
-        variables: [],
+        ...data2,
+        variables: environmentVariables,
       },
       project
     )

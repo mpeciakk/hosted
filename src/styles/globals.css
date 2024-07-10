@@ -81,9 +81,3 @@
     @apply bg-background text-foreground;
   }
 }
-
-@layer components {
-  .card {
-    @apply w-[300px] min-h-[102px];
-  }
-}

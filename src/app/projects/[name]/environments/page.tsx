@@ -1,5 +1,5 @@
-import CardContainer from "@/components/CardContainer"
-import EnvironmentCard from "@/components/environment/environment-card"
+import Card from "@/components/card"
+import CardContainer from "@/components/card-container"
 import { CreateProjectEnvironmentModal } from "@/components/project/environment/create-project-environment-modal"
 import { getEnvironmentTemplates, getEnvironments } from "@/lib/environment"
 
@@ -20,7 +20,11 @@ export default async function ProjectEnvironments({
       <CreateProjectEnvironmentModal project={name} templates={templates} />
 
       {environments.map((environment, i) => (
-        <EnvironmentCard environment={environment} key={i} />
+        <Card
+          title={environment.name}
+          description={`${environment.domain} on branch ${environment.branch}`}
+          key={i}
+        />
       ))}
     </CardContainer>
   )

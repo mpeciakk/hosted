@@ -8,12 +8,12 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
-import { Card } from "../../ui/card"
+import { Card as BaseCard } from "../../ui/card"
 import { FolderPlus } from "lucide-react"
 import { useState } from "react"
 import { EnvironmentTemplate } from "@/types/environment"
 import CreateProjectEnvironmentForm from "./create-project-environment-form"
-import EnvironmentCard from "../../environment/environment-card"
+import Card from "@/components/card"
 
 type CreateProjectEnvironmentModalProps = {
   templates: EnvironmentTemplate[]
@@ -43,9 +43,9 @@ export function CreateProjectEnvironmentModal({
       }}
     >
       <DialogTrigger asChild>
-        <Card className="card cursor-pointer flex items-center justify-center">
+        <BaseCard className="card cursor-pointer flex items-center justify-center">
           <FolderPlus className="w-12 h-12" />
-        </Card>
+        </BaseCard>
       </DialogTrigger>
 
       <DialogContent className="max-w-[1000px] w-fit">
@@ -59,28 +59,31 @@ export function CreateProjectEnvironmentModal({
         {step === "menu" ? (
           <div className="flex gap-4">
             <button onClick={() => setStep("select-template")}>
-              <Card className="w-[300px] cursor-pointer flex items-center justify-center min-h-[102px]">
+              <BaseCard className="w-[300px] cursor-pointer flex items-center justify-center min-h-[102px]">
                 Select existing template
-              </Card>
+              </BaseCard>
             </button>
 
             <button onClick={() => setStep("create")}>
-              <Card className="w-[300px] cursor-pointer flex items-center justify-center min-h-[102px]">
+              <BaseCard className="w-[300px] cursor-pointer flex items-center justify-center min-h-[102px]">
                 Create new
-              </Card>
+              </BaseCard>
             </button>
           </div>
         ) : step === "select-template" ? (
           <div className="grid grid-cols-[300px_300px_300px] gap-4">
-            {templates.map((environment, i) => (
+            {templates.map((template, i) => (
               <button
                 onClick={() => {
-                  setTemplate(environment)
+                  setTemplate(template)
                   setStep("create")
                 }}
                 key={i}
               >
-                <EnvironmentCard environment={environment} />
+                <Card
+                  title={template.name}
+                  description={`${template.domain} on branch ${template.branch}`}
+                />
               </button>
             ))}
           </div>

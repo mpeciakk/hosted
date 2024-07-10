@@ -2,6 +2,7 @@ export type EnvironmentTemplate = {
   name: string
   domain: string
   branch: string
+  composeFile: string
 }
 
 export type EnvironmentVariable = {

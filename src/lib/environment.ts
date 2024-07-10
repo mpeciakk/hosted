@@ -21,6 +21,21 @@ export async function getEnvironments(project: string) {
     where: {
       projectName: project,
     },
+    include: {
+      variables: true
+    }
+  })
+}
+
+export async function getEnvironmentForProject(project: string, environment: string) {
+  return await prisma.environment.findFirst({
+    where: {
+      projectName: project,
+      name: environment
+    },
+    include: {
+      variables: true
+    }
   })
 }
 

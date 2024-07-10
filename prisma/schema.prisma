@@ -21,17 +21,21 @@ model Environment {
   name        String
   branch      String
   domain      String
+  composeFile String
   variables   EnvironmentVariable[]
   deployments Deployment[]
 
   Project     Project @relation(fields: [projectName], references: [name])
   projectName String
+
+  @@unique([name, projectName])
 }
 
 model EnvironmentTemplate {
-  name   String @id @unique
-  branch String
-  domain String
+  name        String @id @unique
+  branch      String
+  domain      String
+  composeFile String
 }
 
 model EnvironmentVariable {
@@ -44,15 +48,16 @@ model EnvironmentVariable {
 }
 
 model Node {
-  id Int @id @unique @default(autoincrement())
-
-  name String
-  url  String
+  name       String       @id @unique
+  url        String
+  Deployment Deployment[]
 }
 
 model Deployment {
   id Int @id @unique @default(autoincrement())
 
+  node          Node        @relation(fields: [nodeName], references: [name])
+  nodeName      String
   environment   Environment @relation(fields: [environmentId], references: [id])
   environmentId Int
   Project       Project     @relation(fields: [projectName], references: [name])
